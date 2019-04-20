@@ -38,10 +38,10 @@ function objToSql(ob) {
   // translate array of strings to a single comma-separated string
   return arr.toString();
 }
-
-// Object for all our SQL statement functions.
 var orm = {
-  all: function(tableInput, cb) {
+
+  //Read
+  selectAll: function(tableInput, cb) { // `selectAll()` 
     var queryString = "SELECT * FROM " + tableInput + ";";
     connection.query(queryString, function(err, result) {
       if (err) {
@@ -50,14 +50,17 @@ var orm = {
       cb(result);
     });
   },
-  create: function(table, cols, vals, cb) {
+
+  //Create
+  insertOne: function(table, cols, vals, cb) {
+
     var queryString = "INSERT INTO " + table;
 
     queryString += " (";
     queryString += cols.toString();
     queryString += ") ";
     queryString += "VALUES (";
-    queryString += printQuestionMarks(vals.length);
+    queryString += printQuestionMarks(vals.length); //Function Stored in JS Module
     queryString += ") ";
 
     console.log(queryString);
@@ -66,16 +69,16 @@ var orm = {
       if (err) {
         throw err;
       }
-
       cb(result);
     });
   },
-  // An example of objColVals would be {name: panther, sleepy: true}
-  update: function(table, objColVals, condition, cb) {
+
+  //Update
+  updateOne: function(table, objColVals, condition, cb) {
     var queryString = "UPDATE " + table;
 
     queryString += " SET ";
-    queryString += objToSql(objColVals);
+    queryString += objToSql(objColVals); //Function Stored in JS Module
     queryString += " WHERE ";
     queryString += condition;
 
@@ -84,24 +87,11 @@ var orm = {
       if (err) {
         throw err;
       }
-
       cb(result);
     });
   },
-  delete: function(table, condition, cb) {
-    var queryString = "DELETE FROM " + table;
-    queryString += " WHERE ";
-    queryString += condition;
 
-    connection.query(queryString, function(err, result) {
-      if (err) {
-        throw err;
-      }
 
-      cb(result);
-    });
-  }
 };
 
-// Export the orm object for the model (cat.js).
 module.exports = orm;

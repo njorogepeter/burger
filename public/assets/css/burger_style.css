@@ -1,0 +1,63 @@
+
+body {
+  background-color: #fc6;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Header Styling */
+
+h1 {
+  font-family: 'Cantarell', sans-serif;
+  font-size: 3.4em;
+  font-style: italic;
+  margin-bottom: 35px;
+}
+
+h2 {
+  font-weight: bold;
+  font-style: italic;
+  color: white;
+  padding: 15px 0;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  padding-top: 7px;
+  padding-left: 12px;
+  height: 38px;
+}
+
+.inline-button {
+  margin-top: -7px;
+}
+
+.devour  {
+  background-color: rgba(247, 255, 214, 0.76);
+  border-radius: 5px;
+}
+
+.devoured {
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+}
+
+/* Add Burger Styling */
+
+.submit {
+  display: block;
+  width: 100%;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-top: 35px;
+  background-color: #f8f9fa;
+  border:none;
+  height: 38px;
+  text-align: center;
+}
